@@ -230,7 +230,6 @@
 </html>
 
 
-<!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
@@ -583,7 +582,6 @@
             }
         });
     </script>
-
 
 </body>
 </html>
