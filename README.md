@@ -585,26 +585,6 @@
     </script>
 
 
-<!-- Add at top of <body> -->
-<div id="loginOverlay" style="position: fixed; top:0; left:0; width:100%; height:100%; background: white; z-index: 9999;">
-    <div class="container" style="max-width: 400px; margin-top: 100px;">
-        <h3>Admin Login</h3>
-        <input type="password" id="adminPassword" class="form-control mb-3" placeholder="Enter Admin Password">
-        <button onclick="checkPassword()" class="btn btn-primary">Login</button>
-    </div>
-</div>
-
-<script>
-// Simple password protection
-function checkPassword() {
-    if (document.getElementById('adminPassword').value === 'your_password') {
-        document.getElementById('Admin Panel - The Daily Chronicle').style.display = 'none';
-    } else {
-        alert('Incorrect password');
-    }
-}
-</script>
-
 </body>
 </html>
 
