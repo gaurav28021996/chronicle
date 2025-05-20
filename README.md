@@ -1,230 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Daily Chronicle | Modern News Platform</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --text-color: #333;
-            --light-bg: #f8f9fa;
-        }
 
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            color: var(--text-color);
-            line-height: 1.6;
-        }
 
-        .navbar {
-            background: var(--primary-color) !important;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+<!--
+  <<< Author notes: Step 2 >>>
+  Start this step by acknowledging the previous step.
+  Define terms and link to docs.github.com.
+  Historic note: previous version checked for empty pull request, changed to the correct theme `minima`.
+-->
 
-        .featured-article {
-            height: 70vh;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-        }
+## Step 2: Configure your site
 
-        .featured-content {
-            position: absolute;
-            bottom: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            color: white;
-            padding: 2rem;
-            width: 100%;
-        }
+_You turned on GitHub Pages! :tada:_
 
-        .article-card {
-            transition: transform 0.3s ease;
-            border: none;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
+We'll work in a branch, `my-pages`, that I created for you to get this site looking great. :sparkle:
 
-        .article-card:hover {
-            transform: translateY(-5px);
-        }
+Jekyll uses a file titled `_config.yml` to store settings for your site, your theme, and reusable content like your site title and GitHub handle. You can check out the `_config.yml` file on the **Code** tab of your repository.
 
-        .category-badge {
-            background: var(--accent-color);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
+We need to use a blog-ready theme. For this activity, we will use a theme named "minima".
 
-        .newsletter-section {
-            background: var(--light-bg);
-            padding: 4rem 0;
-        }
+### :keyboard: Activity: Configure your site
 
-        .author-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
+1. Browse to the `_config.yml` file in the `my-pages` branch.
+1. In the upper right corner, open the file editor.
+1. Add a `theme:` set to **minima** so it shows in the `_config.yml` file as below:
+   ```yml
+   theme: minima
+   ```
+1. (optional) You can modify the other configuration variables such as `title:`, `author:`, and `description:` to further customize your site.
+1. Commit your changes.
+1. (optional) Create a pull request to view all the changes you'll make throughout this course. Click the **Pull Requests** tab, click **New pull request**, set `base: main` and `compare:my-pages`.
+1. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
 
-        .author-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-        }
 
-        @media (max-width: 768px) {
-            .featured-article {
-                height: 50vh;
-            }
-            
-            .article-card {
-                margin-bottom: 1.5rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">The Daily Chronicle</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Politics</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Technology</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Business</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Culture</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Featured Article -->
-    <div class="container mt-4">
-        <div class="featured-article" style="background-image: url('https://source.unsplash.com/random/1200x800')">
-            <div class="featured-content">
-                <span class="category-badge">Featured Story</span>
-                <h1 class="mt-2">Breaking: Major Climate Agreement Reached</h1>
-                <div class="author-info">
-                    <img src="https://source.unsplash.com/random/100x100?face" alt="Author" class="author-img">
-                    <div>
-                        <h5 class="mb-0">Sarah Johnson</h5>
-                        <small>Senior Environmental Correspondent</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- News Grid -->
-    <div class="container mt-5">
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4">
-                <div class="card article-card">
-                    <img src="https://source.unsplash.com/random/800x600?tech" class="card-img-top" alt="Tech News">
-                    <div class="card-body">
-                        <span class="category-badge">Technology</span>
-                        <h5 class="mt-2">New AI Breakthrough Revolutionizes Healthcare</h5>
-                        <p class="text-muted">Discover how machine learning is transforming medical diagnostics...</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <small>15 Min Read</small>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Repeat similar cards for other articles -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card article-card">
-                    <img src="https://source.unsplash.com/random/800x600?business" class="card-img-top" alt="Business News">
-                    <div class="card-body">
-                        <span class="category-badge">Business</span>
-                        <h5 class="mt-2">Global Markets React to New Trade Policies</h5>
-                        <p class="text-muted">Analysis of recent economic developments and market fluctuations...</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <small>8 Min Read</small>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card article-card">
-                    <img src="https://source.unsplash.com/random/800x600?culture" class="card-img-top" alt="Culture News">
-                    <div class="card-body">
-                        <span class="category-badge">Culture</span>
-                        <h5 class="mt-2">Emerging Artists Redefine Modern Art Scene</h5>
-                        <p class="text-muted">Exploring the latest trends in contemporary art exhibitions...</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <small>12 Min Read</small>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter-section mt-5">
-        <div class="container text-center">
-            <h2>Stay Informed</h2>
-            <p class="lead">Subscribe to our daily newsletter for curated news updates</p>
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <form class="input-group">
-                        <input type="email" class="form-control" placeholder="Enter your email">
-                        <button class="btn btn-primary" type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white mt-5 py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>The Daily Chronicle</h5>
-                    <p>Committed to delivering accurate, timely news</p>
-                </div>
-                <div class="col-md-3">
-                    <h6>Categories</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Politics</a></li>
-                        <li><a href="#" class="text-white">Technology</a></li>
-                        <li><a href="#" class="text-white">Business</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h6>Connect</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Twitter</a></li>
-                        <li><a href="#" class="text-white">Facebook</a></li>
-                        <li><a href="#" class="text-white">Instagram</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="text-center mt-3">
-                <small>© 2024 The Daily Chronicle. All rights reserved. | <a href="#" class="text-white">Privacy Policy</a></small>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
