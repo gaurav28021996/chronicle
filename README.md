@@ -487,7 +487,7 @@
 <script>
 // Simple password protection
 function checkPassword() {
-    if (document.getElementById('adminPassword').value === 'your_password') {
+    if (document.getElementById('adminPassword').value === '28021996') {
         document.getElementById('loginOverlay').style.display = 'none';
     } else {
         alert('Incorrect password');
