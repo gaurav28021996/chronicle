@@ -228,7 +228,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
 <script>
     // News API Configuration
     const API_KEY = '9185d55dbda14e73bfb4c1a08e85b429'; // Replace with your NewsAPI key
@@ -277,7 +276,7 @@
     // Fetch news articles
     const fetchNews = async (category = 'general') => {
         try {
-            const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`);
+            const response = await fetch(`https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=${API_KEY}`);
             const data = await response.json();
             
             if(data.articles.length === 0) throw new Error('No articles found');
