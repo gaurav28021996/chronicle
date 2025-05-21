@@ -228,6 +228,96 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+<script>
+    // News API Configuration
+    const API_KEY = 'YOUR_API_KEY'; // Replace with your NewsAPI key
+    const NEWS_API_URL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
+    
+    // DOM Elements
+    const featuredArticle = document.querySelector('.featured-article');
+    const newsGrid = document.querySelector('.row.g-4');
+    const navLinks = document.querySelectorAll('.nav-link');
 
+    // Format date
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+    };
+
+    // Create article card
+    const createArticleCard = (article, category) => {
+        return `
+            <div class="col-md-6 col-lg-4">
+                <div class="card article-card">
+                    <img src="${article.urlToImage || 'https://source.unsplash.com/random/800x600?news'}" 
+                         class="card-img-top" 
+                         alt="${article.title}">
+                    <div class="card-body">
+                        <span class="category-badge">${category}</span>
+                        <h5 class="mt-2">${article.title}</h5>
+                        <p class="text-muted">${article.description?.substring(0, 100) || ''}...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small>${formatDate(article.publishedAt)}</small>
+                            <a href="${article.url}" target="_blank" class="btn btn-sm btn-outline-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    };
+
+    // Update featured article
+    const updateFeaturedArticle = (article) => {
+        featuredArticle.style.backgroundImage = `url('${article.urlToImage || 'https://source.unsplash.com/random/1200x800'}')`;
+        featuredArticle.querySelector('h1').textContent = article.title;
+        featuredArticle.querySelector('h5').textContent = article.author || 'Staff Writer';
+    };
+
+    // Fetch news articles
+    const fetchNews = async (category = 'general') => {
+        try {
+            const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`);
+            const data = await response.json();
+            
+            if(data.articles.length === 0) throw new Error('No articles found');
+            
+            // Clear existing content
+            newsGrid.innerHTML = '';
+            
+            // Update featured article with first result
+            updateFeaturedArticle(data.articles[0]);
+            
+            // Create cards for other articles
+            data.articles.slice(1).forEach(article => {
+                if(article.title !== '[Removed]') { // Filter removed articles
+                    newsGrid.innerHTML += createArticleCard(article, category);
+                }
+            });
+            
+        } catch (error) {
+            console.error('Error fetching news:', error);
+            newsGrid.innerHTML = `
+                <div class="col-12 text-center py-5">
+                    <h3>Unable to load news</h3>
+                    <p>Please try again later</p>
+                </div>
+            `;
+        }
+    };
+
+    // Category filter handler
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const category = e.target.textContent.toLowerCase();
+            navLinks.forEach(l => l.classList.remove('active'));
+            e.target.classList.add('active');
+            fetchNews(category);
+        });
+    });
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', () => fetchNews());
+</script>
 
 
