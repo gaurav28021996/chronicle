@@ -230,7 +230,7 @@
 </html>
 <script>
     // News API Configuration
-    const API_KEY = 'YOUR_API_KEY'; // Replace with your NewsAPI key
+    const API_KEY = '9185d55dbda14e73bfb4c1a08e85b429'; // Replace with your NewsAPI key
     const NEWS_API_URL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
     
     // DOM Elements
